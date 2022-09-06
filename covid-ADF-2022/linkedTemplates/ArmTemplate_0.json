@@ -358,7 +358,7 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/population/blobs/population/population_by_age.tsv.gz",
+					"blobPathBeginsWith": "/population/blobs/population_by_age.tsv.gz",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('Storage_Event_Trigger_properties_typeProperties_scope')]",
 					"events": [
