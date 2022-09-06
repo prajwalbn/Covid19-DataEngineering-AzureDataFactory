@@ -219,14 +219,7 @@
 											"type": "DatasetReference",
 											"parameters": {}
 										},
-										"logStorageSettings": {
-											"linkedServiceName": {
-												"referenceName": "ls_ablob_covidadfplatform",
-												"type": "LinkedServiceReference"
-											},
-											"path": "population"
-										},
-										"enableLogging": true,
+										"enableLogging": false,
 										"storeSettings": {
 											"type": "AzureBlobStorageReadSettings",
 											"recursive": true,
