@@ -18,6 +18,10 @@
 		"ls_adls_covidadfdatalakeadf_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://covidadfdatalakeadf.dfs.core.windows.net/"
+		},
+		"Storage_Event_Trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/e8064e14-af41-4c66-83ba-9003fab45c56/resourceGroups/Covid-reporting/providers/Microsoft.Storage/storageAccounts/covidadfplatform"
 		}
 	},
 	"variables": {
@@ -278,6 +282,47 @@
 											"parameters": {}
 										}
 									]
+								},
+								{
+									"name": "Delete from source",
+									"description": "Deletes the data from source after copying to data lake",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Copy Population",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "1.0:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "ds_population_raw_gz",
+											"type": "DatasetReference",
+											"parameters": {}
+										},
+										"logStorageSettings": {
+											"linkedServiceName": {
+												"referenceName": "ls_ablob_covidadfplatform",
+												"type": "LinkedServiceReference"
+											},
+											"path": "population"
+										},
+										"enableLogging": true,
+										"storeSettings": {
+											"type": "AzureBlobStorageReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false
+										}
+									}
 								}
 							]
 						}
@@ -291,7 +336,38 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_population_raw_gz')]",
-				"[concat(variables('factoryId'), '/datasets/ds_population_raw_tsv')]"
+				"[concat(variables('factoryId'), '/datasets/ds_population_raw_tsv')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_ablob_covidadfplatform')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Storage_Event_Trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_ingestion_population_data",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/population/blobs/population/population_by_age.tsv.gz",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('Storage_Event_Trigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_ingestion_population_data')]"
 			]
 		}
 	]
