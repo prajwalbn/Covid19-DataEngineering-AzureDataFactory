@@ -14,6 +14,9 @@
 		"ls_adls_covidadfdatalakeadf_properties_typeProperties_url": {
 			"value": "https://covidadfdatalakeadf.dfs.core.windows.net/"
 		},
+		"Storage_Event_Trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/e8064e14-af41-4c66-83ba-9003fab45c56/resourceGroups/Covid-reporting/providers/Microsoft.Storage/storageAccounts/covidadfplatform"
+		},
 		"containerUri": {
 			"value": ""
 		},
