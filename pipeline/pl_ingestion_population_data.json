@@ -7,7 +7,14 @@
 				"name": "Copy Population",
 				"description": "Copy Activity ",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Validation for file check",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.00:05:00",
 					"retry": 0,
@@ -61,6 +68,22 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Validation for file check",
+				"description": "This is a validation checkpoint to test if the file exists.",
+				"type": "Validation",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_population_raw_gz",
+						"type": "DatasetReference"
+					},
+					"timeout": "10.00:00:00",
+					"sleep": 600,
+					"minimumSize": 1024
+				}
 			}
 		],
 		"annotations": []
