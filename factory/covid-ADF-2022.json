@@ -1,0 +1,9 @@
+{
+	"name": "covid-ADF-2022",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9d026452-55ec-4350-8355-64ab706ebbd5",
+		"tenantId": "569df091-b013-40e3-86ee-bd9cb9e25814"
+	}
+}
