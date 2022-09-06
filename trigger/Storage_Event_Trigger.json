@@ -3,10 +3,17 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [],
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_ingestion_population_data",
+					"type": "PipelineReference"
+				}
+			}
+		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
-			"blobPathBeginsWith": "/population/blobs/population/population_by_age.tsv.gz",
+			"blobPathBeginsWith": "/population/blobs/population_by_age.tsv.gz",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/e8064e14-af41-4c66-83ba-9003fab45c56/resourceGroups/Covid-reporting/providers/Microsoft.Storage/storageAccounts/covidadfplatform",
 			"events": [
