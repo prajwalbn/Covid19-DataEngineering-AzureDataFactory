@@ -1,0 +1,17 @@
+{
+	"name": "trigger_ingest_hospital",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-09T23:32:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
