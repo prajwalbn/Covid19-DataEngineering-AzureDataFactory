@@ -351,6 +351,40 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Json_source_ecdc')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_ablob_covidadfplatform",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "json_source.json",
+						"container": "config"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"SourceRelativeURL": {
+							"type": "string"
+						},
+						"SinkFileName": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_ablob_covidadfplatform')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/ds_http_datalake')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -583,8 +617,7 @@
 						"frequency": "Day",
 						"interval": 2,
 						"startTime": "2022-09-09T23:38:00",
-						"timeZone": "GMT Standard Time",
-						"schedule": {}
+						"timeZone": "GMT Standard Time"
 					}
 				}
 			},
