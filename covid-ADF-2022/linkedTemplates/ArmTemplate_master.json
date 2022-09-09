@@ -19,13 +19,13 @@
 			"type": "string",
 			"defaultValue": "https://covidadfdatalakeadf.dfs.core.windows.net/"
 		},
-		"Storage_Event_Trigger_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/e8064e14-af41-4c66-83ba-9003fab45c56/resourceGroups/Covid-reporting/providers/Microsoft.Storage/storageAccounts/covidadfplatform"
-		},
 		"ls_http_opendata_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://raw.githubusercontent.com"
+		},
+		"Storage_Event_Trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/e8064e14-af41-4c66-83ba-9003fab45c56/resourceGroups/Covid-reporting/providers/Microsoft.Storage/storageAccounts/covidadfplatform"
 		},
 		"trigger_ingest_hospital_properties_pl_ingest_ecdc_data_parameters_SourceRelativeURL": {
 			"type": "string",
