@@ -582,8 +582,8 @@
 					"recurrence": {
 						"frequency": "Minute",
 						"interval": 2,
-						"startTime": "2022-09-09T23:35:00Z",
-						"timeZone": "UTC"
+						"startTime": "2022-09-09T23:38:00",
+						"timeZone": "GMT Standard Time"
 					}
 				}
 			},
