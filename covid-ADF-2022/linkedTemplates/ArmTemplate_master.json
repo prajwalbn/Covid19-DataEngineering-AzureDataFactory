@@ -21,7 +21,7 @@
 		},
 		"ls_http_opendata_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://raw.githubusercontent.com"
+			"defaultValue": "@{linkedService().SourceURL}"
 		},
 		"Storage_Event_Trigger_properties_typeProperties_scope": {
 			"type": "string",

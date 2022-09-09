@@ -21,7 +21,7 @@
 		},
 		"ls_http_opendata_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://raw.githubusercontent.com"
+			"defaultValue": "@{linkedService().SourceURL}"
 		},
 		"Storage_Event_Trigger_properties_typeProperties_scope": {
 			"type": "string",
@@ -76,6 +76,11 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"description": "Linked Service to connect ADF with HTTP source",
+				"parameters": {
+					"SourceURL": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "HttpServer",
 				"typeProperties": {
@@ -164,10 +169,19 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "ls_http_opendata",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"SourceURL": {
+							"value": "@dataset().SourceBaseURL",
+							"type": "Expression"
+						}
+					}
 				},
 				"parameters": {
 					"relativeURL": {
+						"type": "string"
+					},
+					"SourceBaseURL": {
 						"type": "string"
 					}
 				},
@@ -311,6 +325,10 @@
 									"relativeURL": {
 										"value": "@pipeline().parameters.SourceRelativeURL",
 										"type": "Expression"
+									},
+									"SourceBaseURL": {
+										"value": "@pipeline().parameters.SourceBaseURL",
+										"type": "Expression"
 									}
 								}
 							}
@@ -338,6 +356,9 @@
 						"type": "string"
 					},
 					"SinkFileName": {
+						"type": "string"
+					},
+					"SourceBaseURL": {
 						"type": "string"
 					}
 				},
