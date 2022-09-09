@@ -23,6 +23,18 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/e8064e14-af41-4c66-83ba-9003fab45c56/resourceGroups/Covid-reporting/providers/Microsoft.Storage/storageAccounts/covidadfplatform"
 		},
+		"ls_http_opendata_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com"
+		},
+		"trigger_ingest_hospital_properties_pl_ingest_ecdc_data_parameters_SourceRelativeURL": {
+			"type": "string",
+			"defaultValue": "cloudboxacademy/covid19/main/ecdc_data/hospital_admissions.csv"
+		},
+		"trigger_ingest_hospital_properties_pl_ingest_ecdc_data_parameters_SinkFileName": {
+			"type": "string",
+			"defaultValue": "hospital_admissions.csv"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -59,8 +71,17 @@
 					"ls_adls_covidadfdatalakeadf_properties_typeProperties_url": {
 						"value": "[parameters('ls_adls_covidadfdatalakeadf_properties_typeProperties_url')]"
 					},
+					"ls_http_opendata_properties_typeProperties_url": {
+						"value": "[parameters('ls_http_opendata_properties_typeProperties_url')]"
+					},
 					"Storage_Event_Trigger_properties_typeProperties_scope": {
 						"value": "[parameters('Storage_Event_Trigger_properties_typeProperties_scope')]"
+					},
+					"trigger_ingest_hospital_properties_pl_ingest_ecdc_data_parameters_SourceRelativeURL": {
+						"value": "[parameters('trigger_ingest_hospital_properties_pl_ingest_ecdc_data_parameters_SourceRelativeURL')]"
+					},
+					"trigger_ingest_hospital_properties_pl_ingest_ecdc_data_parameters_SinkFileName": {
+						"value": "[parameters('trigger_ingest_hospital_properties_pl_ingest_ecdc_data_parameters_SinkFileName')]"
 					}
 				}
 			},
