@@ -1,0 +1,29 @@
+{
+	"name": "Json_source_ecdc",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_ablob_covidadfplatform",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "json_source.json",
+				"container": "config"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"SourceRelativeURL": {
+					"type": "string"
+				},
+				"SinkFileName": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
