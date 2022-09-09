@@ -1,10 +1,10 @@
 {
-	"name": "pl_ingest_cases_deaths_data",
+	"name": "pl_ingest_ecdc_data",
 	"properties": {
 		"description": "Pipeline for Ingesting data from ecdc source ",
 		"activities": [
 			{
-				"name": "Copy_cases_deaths_data",
+				"name": "Copy_ecdc_data",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -53,7 +53,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeURL": {
-								"value": "@variables('SourceRelativeURL')",
+								"value": "@pipeline().parameters.SourceRelativeURL",
 								"type": "Expression"
 							}
 						}
@@ -65,7 +65,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"FilePath": {
-								"value": "@variables('SinkFileName')",
+								"value": "@pipeline().parameters.SinkFileName",
 								"type": "Expression"
 							}
 						}
