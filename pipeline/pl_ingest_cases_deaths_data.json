@@ -50,17 +50,39 @@
 				"inputs": [
 					{
 						"referenceName": "ds_http_opendata",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeURL": {
+								"value": "@variables('SourceRelativeURL')",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "ds_http_datalake",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FilePath": {
+								"value": "@variables('SinkFileName')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"variables": {
+			"SourceRelativeURL": {
+				"type": "String",
+				"defaultValue": "cloudboxacademy/covid19/main/ecdc_data/cases_deaths.csv"
+			},
+			"SinkFileName": {
+				"type": "String",
+				"defaultValue": "cases_deaths.csv"
+			}
+		},
 		"annotations": []
 	}
 }
