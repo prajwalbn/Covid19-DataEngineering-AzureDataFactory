@@ -1,0 +1,23 @@
+{
+	"name": "ds_sink_cases_death",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_covidadfdatalakeadf",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "ecdc/cases_death",
+				"fileSystem": "trtansformedcasesdeath"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
