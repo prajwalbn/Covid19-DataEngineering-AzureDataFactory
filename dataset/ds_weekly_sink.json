@@ -1,0 +1,23 @@
+{
+	"name": "ds_weekly_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_covidadfdatalakeadf",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "ecdc/weeklydata",
+				"fileSystem": "trtansformedcasesdeath"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
